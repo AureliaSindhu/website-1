@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Build with AI 2026 core palette (from brand guide PDF) */
+  --bwai-blue-500: #4285f4;
+  --bwai-green-500: #34a853;
+  --bwai-yellow-600: #f9ab00;
+  --bwai-red-500: #ea4335;
+
+  /* Optional supporting tones (from brand guide PDF) */
+  --bwai-halftone-blue: #57caff;
+  --bwai-halftone-green: #5cdb6d;
+  --bwai-halftone-yellow: #ffd427;
+  --bwai-halftone-red: #ff7daf;
+
+  --bwai-pastel-blue: #c3ecf6;
+  --bwai-pastel-green: #ccf6c5;
+  --bwai-pastel-yellow: #ffe7a5;
+  --bwai-pastel-red: #f8d8d8;
+
+  --bwai-off-white: #f0f0f0;
+  --bwai-black-02: #1e1e1e;
+
+  --background: var(--bwai-off-white);
+  --foreground: var(--bwai-black-02);
+  --surface: #ffffff;
+  --surface-foreground: var(--bwai-black-02);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+
+  --color-bwai-blue: var(--bwai-blue-500);
+  --color-bwai-green: var(--bwai-green-500);
+  --color-bwai-yellow: var(--bwai-yellow-600);
+  --color-bwai-red: var(--bwai-red-500);
+
+  --color-bwai-halftone-blue: var(--bwai-halftone-blue);
+  --color-bwai-halftone-green: var(--bwai-halftone-green);
+  --color-bwai-halftone-yellow: var(--bwai-halftone-yellow);
+  --color-bwai-halftone-red: var(--bwai-halftone-red);
+
+  --color-bwai-pastel-blue: var(--bwai-pastel-blue);
+  --color-bwai-pastel-green: var(--bwai-pastel-green);
+  --color-bwai-pastel-yellow: var(--bwai-pastel-yellow);
+  --color-bwai-pastel-red: var(--bwai-pastel-red);
+
+  /*
+    Brand guide calls for Google Sans; that's not distributed via Google Fonts.
+    We load Roboto via next/font and keep "Google Sans" as a preferred fallback
+    in case you provide it locally later.
+  */
+  --font-sans: var(--font-brand-sans);
+  --font-mono: var(--font-brand-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b0b0b;
+    --foreground: var(--bwai-off-white);
+    --surface: #111111;
+    --surface-foreground: var(--bwai-off-white);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    "Google Sans",
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+a {
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.15em;
 }
